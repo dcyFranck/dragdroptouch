@@ -1,18 +1,3 @@
-function debounce(func, wait, immediate) {
-    var timeout;
-    return function() {
-        var context = this, args = arguments;
-        var later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
-
 var DragDropTouch;
 (function (DragDropTouch_1) {
     'use strict';
@@ -26,6 +11,22 @@ var DragDropTouch;
      * This object is created automatically by the @see:DragDropTouch singleton and is
      * accessible through the @see:dataTransfer property of all drag events.
      */
+    
+    var debounce = function(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+    
     var DataTransfer = (function () {
         function DataTransfer() {
             this._dropEffect = 'move';
