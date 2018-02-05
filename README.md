@@ -1,3 +1,7 @@
+# For Decisyon
+
+Resolve this issue : https://github.com/Bernardo-Castilho/dragdroptouch/issues/12
+
 # DragDropTouch
 
 Polyfill that enables HTML5 drag drop support on mobile (touch) devices.
